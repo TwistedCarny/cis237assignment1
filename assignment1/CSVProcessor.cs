@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class Program
+    class CSVProcessor
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
