@@ -10,8 +10,40 @@ namespace assignment1
 {
     class Program
     {
+        private static bool isRunning = true;
+
         static void Main(string[] args)
         {
+            UserInterface UI = new UserInterface();
+
+            
+            while (isRunning)
+            {
+                int userInput = UI.DisplayMenuOptions();
+                switch (userInput)
+                {
+                    case 1:
+                        // Do something
+                        break;
+                    case 2:
+                        // Do something
+                        break;
+                    case 3:
+                        // Do something
+                        break;
+                    case 4:
+                        // Do something
+                        break;
+                    case 5:
+                        // Do something
+                        break;
+                    default:
+                        UI.DisplayInvalidSelectionMessage();
+                        break;
+                }
+                UI.ClearScreen();
+            }
+
         }
     }
 }
