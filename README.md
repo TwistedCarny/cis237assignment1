@@ -84,5 +84,6 @@ Suggestion/Hints:
 | **Total**           | **100**|
 
 ## Outside Resources Used
+http://stackoverflow.com/questions/794760/does-index-of-array-exist
 
 ## Known Problems, Issues, And/Or Errors in the Program

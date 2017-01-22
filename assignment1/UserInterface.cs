@@ -28,6 +28,11 @@ namespace assignment1
             Console.ReadLine(); // Wait for user input after displaying message.
         }
 
+        public void Output(string output)
+        {
+            Console.WriteLine(output);
+        }
+
         public void ClearScreen()
         {
             Console.Clear();

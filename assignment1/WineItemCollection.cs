@@ -10,29 +10,30 @@ namespace assignment1
 {
     class WineItemCollection
     {
-        private WineItem[] _wineItems;
+        private WineItem[] _wineItemArray;
 
-        public WineItem[] WineItems
+
+        public WineItem[] WineItemArray
         {
-            get { return _wineItems; }
+            get { return _wineItemArray; }
         }
 
         public WineItemCollection(int size)
         {
-            _wineItems = new WineItem[size];
+            _wineItemArray = new WineItem[size];
         }
 
         public void Add(int index, string id, string description, string pack)
         {
-            if(index < _wineItems.Length && _wineItems[index] == null)
+            if(index < _wineItemArray.Length && _wineItemArray[index] == null)
             {
-                _wineItems[index] = new WineItem(id, description, pack);
+                _wineItemArray[index] = new WineItem(id, description, pack);
             }
             else
             {
-                Array.Resize(ref _wineItems, _wineItems.Length + 1);
-                index = _wineItems.Length-1;
-                _wineItems[index] = new WineItem(id, description, pack);
+                Array.Resize(ref _wineItemArray, _wineItemArray.Length + 1);
+                index = _wineItemArray.Length-1;
+                _wineItemArray[index] = new WineItem(id, description, pack);
             }
         }
     }

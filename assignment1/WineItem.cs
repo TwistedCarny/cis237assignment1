@@ -35,5 +35,10 @@ namespace assignment1
             _description = description;
             _pack = pack;
         }
+
+        public override string ToString()
+        {
+            return _id + "," + _description + "," + _pack;
+        }
     }
 }

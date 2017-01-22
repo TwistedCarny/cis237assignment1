@@ -23,11 +23,34 @@ namespace assignment1
                 int userInput = ui.GetUserInput();
                 switch (userInput)
                 {
-                    case 1:
-                        csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
+                    case 1: //TODO: Seperate into it's own method
+                        if (!CSVProcessor.listLoaded)
+                        {
+                            csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
+                        }
+                        else
+                        {
+                            ui.Output("The WineItem list has already been loaded.");
+                        }
+
                         break;
-                    case 2:
-                        // Do something
+                    case 2: //TODO: Seperate into it's own method
+                        if (CSVProcessor.listLoaded)
+                        {
+                            foreach (WineItem wineItem in wineItems.WineItemArray)
+                            {
+                                if (wineItem != null)
+                                {
+                                    Console.WriteLine(wineItem.ToString());
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            ui.Output("List is empty");
+                        }
+                        
                         break;
                     case 3:
                         // Do something

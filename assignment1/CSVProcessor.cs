@@ -12,6 +12,8 @@ namespace assignment1
     class CSVProcessor
     {
 
+        public static bool listLoaded = false;
+
         public void ProcessFile(string filePath, WineItemCollection wineItems)
         {
             StreamReader dataFile = File.OpenText(filePath);
@@ -31,6 +33,8 @@ namespace assignment1
 
                 index++;
             }
+
+            listLoaded = true;
         }
 
     }
