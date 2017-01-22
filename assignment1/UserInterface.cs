@@ -10,7 +10,7 @@ namespace assignment1
 {
     class UserInterface
     {
-        public int DisplayMenuOptions()
+        public int GetUserInput()
         {
             Console.WriteLine("1 - Load Wine List");
             Console.WriteLine("2 - Display Items");
@@ -21,7 +21,7 @@ namespace assignment1
             return int.Parse(Console.ReadLine());
         }
 
-        public void DisplayInvalidSelectionMessage()
+        public void PrintInvalidSelectionMessage()
         {
             Console.WriteLine("Invalid selection. Please select a menu item from 1-5.");
 

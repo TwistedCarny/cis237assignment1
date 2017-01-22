@@ -14,16 +14,17 @@ namespace assignment1
 
         static void Main(string[] args)
         {
-            UserInterface UI = new UserInterface();
-
+            UserInterface ui = new UserInterface();
+            CSVProcessor csvProcessor = new CSVProcessor();
+            WineItemCollection wineItems = new WineItemCollection(4000);
             
             while (isRunning)
             {
-                int userInput = UI.DisplayMenuOptions();
+                int userInput = ui.GetUserInput();
                 switch (userInput)
                 {
                     case 1:
-                        // Do something
+                        csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
                         break;
                     case 2:
                         // Do something
@@ -38,10 +39,10 @@ namespace assignment1
                         // Do something
                         break;
                     default:
-                        UI.DisplayInvalidSelectionMessage();
+                        ui.PrintInvalidSelectionMessage();
                         break;
                 }
-                UI.ClearScreen();
+                //ui.ClearScreen();
             }
 
         }
