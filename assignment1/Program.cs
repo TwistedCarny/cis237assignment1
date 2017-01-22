@@ -24,40 +24,17 @@ namespace assignment1
                 int userInput = ui.GetUserInput(true);
                 switch (userInput)
                 {
-                    case 1: //TODO: Seperate into it's own method
-                        if (!CSVProcessor.listLoaded)
-                        {
-                            csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
-                        }
-                        else
-                        {
-                            ui.Output("The WineItem list has already been loaded.");
-                        }
-
+                    case 1:
+                        LoadListMenuOption(csvProcessor, wineItems);
                         break;
-                    case 2: //TODO: Seperate into it's own method
-                        if (CSVProcessor.listLoaded)
-                        {
-                            foreach (WineItem wineItem in wineItems.WineItemArray)
-                            {
-                                if (wineItem != null)
-                                {
-                                    Console.WriteLine(wineItem.ToString());
-                                }
-
-                            }
-                        }
-                        else
-                        {
-                            ui.Output("List is empty");
-                        }
-                        
+                    case 2:
+                        DisplayListMenuOption(wineItems);      
                         break;
                     case 3:
                         SearchMenuOption(wineItems);
                         break;
                     case 4:
-                        // Do something
+                        AddItemMenuOption(wineItems);
                         break;
                     case 5:
                         isRunning = false;
@@ -69,6 +46,37 @@ namespace assignment1
                 //ui.ClearScreen();
             }
 
+        }
+
+        public static void LoadListMenuOption(CSVProcessor csvProcessor, WineItemCollection wineItems)
+        {
+            if (!CSVProcessor.listLoaded)
+            {
+                csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
+            }
+            else
+            {
+                ui.Output("The WineItem list has already been loaded.");
+            }
+        }
+
+        public static void DisplayListMenuOption(WineItemCollection wineItems)
+        {
+            if (CSVProcessor.listLoaded)
+            {
+                foreach (WineItem wineItem in wineItems.WineItemArray)
+                {
+                    if (wineItem != null)
+                    {
+                        Console.WriteLine(wineItem.ToString());
+                    }
+
+                }
+            }
+            else
+            {
+                ui.Output("List is empty");
+            }
         }
 
         public static void SearchMenuOption(WineItemCollection wineItemCollection)
@@ -94,6 +102,25 @@ namespace assignment1
                 ui.Output("The WineItem list has not been loaded. Please load the list and try again.");
             }
             
+        }
+
+        public static void AddItemMenuOption(WineItemCollection wineItems)
+        {
+            string id;
+            string description;
+            string pack;
+            ui.ClearScreen();
+
+            ui.Output("Enter Wine Item ID:");
+            id = ui.GetUserInput();
+
+            ui.Output("Enter Wine Item Description:");
+            description = ui.GetUserInput();
+
+            ui.Output("Enter Wine Item Pack:");
+            pack = ui.GetUserInput();
+
+            wineItems.Add(id, description, pack);
         }
     }
 }

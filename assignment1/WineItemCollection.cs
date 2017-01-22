@@ -23,30 +23,45 @@ namespace assignment1
             _wineItemArray = new WineItem[size];
         }
 
-        public void Add(int index, string id, string description, string pack)
+        public void Add(string id, string description, string pack)
         {
-            if(index < _wineItemArray.Length && _wineItemArray[index] == null)
+            int searchIndex = SearchForEmptyIndex();
+            if(searchIndex != -1)
             {
-                _wineItemArray[index] = new WineItem(id, description, pack);
+                _wineItemArray[searchIndex] = new WineItem(id, description, pack);
             }
             else
             {
                 Array.Resize(ref _wineItemArray, _wineItemArray.Length + 1);
-                index = _wineItemArray.Length-1;
+                int index = _wineItemArray.Length - 1;
                 _wineItemArray[index] = new WineItem(id, description, pack);
             }
+            
         }
 
         public int Search(string inputID)
         {
-            for(int i = 0; i < _wineItemArray.Length; i++)
+            for (int i = 0; i < _wineItemArray.Length; i++)
             {
-                if(_wineItemArray[i] != null && _wineItemArray[i].ID.ToUpper() == inputID.ToUpper())
+                if (_wineItemArray[i] != null && _wineItemArray[i].ID.ToUpper() == inputID.ToUpper())
                 {
                     return i; // Found matching item. Return matching index
                 }
             }
             return -1; // Did not find matching item. Return -1;
+        }
+
+        private int SearchForEmptyIndex()
+        {
+            for(int i = 0; i < _wineItemArray.Length; i++)
+            {
+                if(_wineItemArray[i] == null)
+                {
+                    return i; // Found index with null wine item
+                }
+            }
+
+            return -1; // Did not find index with null wine item
         }
     }
 }

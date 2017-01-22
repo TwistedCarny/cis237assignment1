@@ -29,7 +29,7 @@ namespace assignment1
                 string description = inputFields[1];
                 string pack = inputFields[2];
 
-                wineItems.Add(index, id, description, pack);
+                wineItems.Add(id, description, pack);
 
                 index++;
             }
