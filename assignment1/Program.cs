@@ -11,16 +11,17 @@ namespace assignment1
     class Program
     {
         private static bool isRunning = true;
+        private static UserInterface ui;
 
         static void Main(string[] args)
         {
-            UserInterface ui = new UserInterface();
+            ui = new UserInterface();
             CSVProcessor csvProcessor = new CSVProcessor();
             WineItemCollection wineItems = new WineItemCollection(4000);
             
             while (isRunning)
             {
-                int userInput = ui.GetUserInput();
+                int userInput = ui.GetUserInput(true);
                 switch (userInput)
                 {
                     case 1: //TODO: Seperate into it's own method
@@ -53,13 +54,13 @@ namespace assignment1
                         
                         break;
                     case 3:
-                        // Do something
+                        SearchMenuOption(wineItems);
                         break;
                     case 4:
                         // Do something
                         break;
                     case 5:
-                        // Do something
+                        isRunning = false;
                         break;
                     default:
                         ui.PrintInvalidSelectionMessage();
@@ -68,6 +69,31 @@ namespace assignment1
                 //ui.ClearScreen();
             }
 
+        }
+
+        public static void SearchMenuOption(WineItemCollection wineItemCollection)
+        {
+            if (CSVProcessor.listLoaded)
+            {
+                ui.ClearScreen();
+                ui.Output("Enter ID to search for.");
+                string userInput = ui.GetUserInput();
+                int index = wineItemCollection.Search(userInput);
+                if (index != -1)
+                {
+                    ui.Output("Found matching item.");
+                    ui.Output(wineItemCollection.WineItemArray[index].ToString());
+                }
+                else
+                {
+                    ui.Output("Could not find an item with a matching ID");
+                }
+            }
+            else
+            {
+                ui.Output("The WineItem list has not been loaded. Please load the list and try again.");
+            }
+            
         }
     }
 }

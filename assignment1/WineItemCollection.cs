@@ -36,5 +36,17 @@ namespace assignment1
                 _wineItemArray[index] = new WineItem(id, description, pack);
             }
         }
+
+        public int Search(string inputID)
+        {
+            for(int i = 0; i < _wineItemArray.Length; i++)
+            {
+                if(_wineItemArray[i] != null && _wineItemArray[i].ID.ToUpper() == inputID.ToUpper())
+                {
+                    return i; // Found matching item. Return matching index
+                }
+            }
+            return -1; // Did not find matching item. Return -1;
+        }
     }
 }
