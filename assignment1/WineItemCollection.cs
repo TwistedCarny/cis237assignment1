@@ -12,12 +12,6 @@ namespace assignment1
     {
         private WineItem[] _wineItemArray;
 
-
-        public WineItem[] WineItemArray
-        {
-            get { return _wineItemArray; }
-        }
-
         public WineItemCollection(int size)
         {
             _wineItemArray = new WineItem[size];
@@ -26,7 +20,7 @@ namespace assignment1
         public void Add(string id, string description, string pack)
         {
             int searchIndex = SearchForEmptyIndex();
-            if(searchIndex != -1)
+            if (searchIndex != -1)
             {
                 _wineItemArray[searchIndex] = new WineItem(id, description, pack);
             }
@@ -36,26 +30,46 @@ namespace assignment1
                 int index = _wineItemArray.Length - 1;
                 _wineItemArray[index] = new WineItem(id, description, pack);
             }
-            
+
         }
 
-        public int Search(string inputID)
+        public WineItem Search(string inputID)
         {
-            for (int i = 0; i < _wineItemArray.Length; i++)
+            WineItem wineItem = null;
+            foreach(WineItem item in _wineItemArray)
             {
-                if (_wineItemArray[i] != null && _wineItemArray[i].ID.ToUpper() == inputID.ToUpper())
+                if(item.ID.ToUpper() == inputID.ToUpper())
                 {
-                    return i; // Found matching item. Return matching index
+                    wineItem = item;
+
+                    return item;
                 }
             }
-            return -1; // Did not find matching item. Return -1;
+
+            return null;
+        }
+
+        public string GetPrintString()
+        {
+            string output = "";
+
+            foreach (WineItem wineItem in _wineItemArray)
+            {
+                if (wineItem != null)
+                {
+                    output += wineItem.ID + "," + wineItem.Description + "," + wineItem.Pack + Environment.NewLine;
+                }
+
+            }
+
+            return output;
         }
 
         private int SearchForEmptyIndex()
         {
-            for(int i = 0; i < _wineItemArray.Length; i++)
+            for (int i = 0; i < _wineItemArray.Length; i++)
             {
-                if(_wineItemArray[i] == null)
+                if (_wineItemArray[i] == null)
                 {
                     return i; // Found index with null wine item
                 }

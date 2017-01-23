@@ -52,7 +52,7 @@ namespace assignment1
         {
             if (!CSVProcessor.listLoaded)
             {
-                csvProcessor.ProcessFile(Environment.CurrentDirectory + "/WineList.csv", wineItems);
+                csvProcessor.ProcessFile("WineList.csv", wineItems);
             }
             else
             {
@@ -64,14 +64,7 @@ namespace assignment1
         {
             if (CSVProcessor.listLoaded)
             {
-                foreach (WineItem wineItem in wineItems.WineItemArray)
-                {
-                    if (wineItem != null)
-                    {
-                        Console.WriteLine(wineItem.ToString());
-                    }
-
-                }
+                ui.Output(wineItems.GetPrintString());
             }
             else
             {
@@ -86,11 +79,11 @@ namespace assignment1
                 ui.ClearScreen();
                 ui.Output("Enter ID to search for.");
                 string userInput = ui.GetUserInput();
-                int index = wineItemCollection.Search(userInput);
-                if (index != -1)
+                WineItem wineItem = wineItemCollection.Search(userInput);
+                if (wineItem != null)
                 {
                     ui.Output("Found matching item.");
-                    ui.Output(wineItemCollection.WineItemArray[index].ToString());
+                    ui.Output(wineItem.ToString());
                 }
                 else
                 {

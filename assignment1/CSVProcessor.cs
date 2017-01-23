@@ -16,25 +16,44 @@ namespace assignment1
 
         public void ProcessFile(string filePath, WineItemCollection wineItems)
         {
-            StreamReader dataFile = File.OpenText(filePath);
+            StreamReader dataFile = null;
 
-            int index = 0;
-            while (!dataFile.EndOfStream)
+            try
             {
-                string inputRecord = dataFile.ReadLine();
+                dataFile = new StreamReader(filePath);
 
-                var inputFields = inputRecord.Split(',');
+                int index = 0;
+                while (!dataFile.EndOfStream)
+                {
+                    string inputRecord = dataFile.ReadLine();
 
-                string id = inputFields[0];
-                string description = inputFields[1];
-                string pack = inputFields[2];
+                    var inputFields = inputRecord.Split(',');
 
-                wineItems.Add(id, description, pack);
+                    string id = inputFields[0];
+                    string description = inputFields[1];
+                    string pack = inputFields[2];
 
-                index++;
+                    wineItems.Add(id, description, pack);
+
+                    index++;
+                }
+
+                listLoaded = true;
             }
-
-            listLoaded = true;
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine();
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                if(dataFile != null)
+                {
+                    dataFile.Close();
+                }
+            }  
+            
         }
 
     }
