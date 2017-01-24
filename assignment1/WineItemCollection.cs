@@ -35,13 +35,10 @@ namespace assignment1
 
         public WineItem Search(string inputID)
         {
-            WineItem wineItem = null;
             foreach(WineItem item in _wineItemArray)
             {
                 if(item.ID.ToUpper() == inputID.ToUpper())
                 {
-                    wineItem = item;
-
                     return item;
                 }
             }
