@@ -19,9 +19,9 @@ namespace assignment1
             CSVProcessor csvProcessor = new CSVProcessor();
             WineItemCollection wineItems = new WineItemCollection(4000);
             
-            while (isRunning)
+            while (isRunning) // Main loop
             {
-                int userInput = ui.GetUserInput(true);
+                int userInput = ui.GetUserInput(true); // Print menu and get user input
                 switch (userInput)
                 {
                     case 1:
@@ -51,6 +51,7 @@ namespace assignment1
         // Method that gets called when the "Load List Menu Option" is called.
         public static void LoadListMenuOption(CSVProcessor csvProcessor, WineItemCollection wineItems)
         {
+            ui.ClearScreen();
             if (!CSVProcessor.listLoaded)
             {
                 csvProcessor.ProcessFile("WineList.csv", wineItems);

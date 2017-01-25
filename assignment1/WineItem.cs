@@ -10,10 +10,12 @@ namespace assignment1
 {
     class WineItem
     {
+        // Private variables
         private string _id;
         private string _description;
         private string _pack;
 
+        // Properties
         public string ID
         {
             get { return _id; }
@@ -29,6 +31,7 @@ namespace assignment1
             get { return _pack; }
         }
 
+        // Constructor
         public WineItem(string id, string description, string pack)
         {
             _id = id;
@@ -36,6 +39,7 @@ namespace assignment1
             _pack = pack;
         }
 
+        // Override ToString() to output information about the WineItem
         public override string ToString()
         {
             return _id + "," + _description + "," + _pack;

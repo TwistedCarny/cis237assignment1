@@ -11,9 +11,10 @@ namespace assignment1
 {
     class CSVProcessor
     {
-
+        // Static bool used to check if the list is loaded
         public static bool listLoaded = false;
 
+        // Load data into an array from whatever file is set for the file path
         public void ProcessFile(string filePath, WineItemCollection wineItems)
         {
             StreamReader dataFile = null;
@@ -22,8 +23,8 @@ namespace assignment1
             {
                 dataFile = new StreamReader(filePath);
 
-                int index = 0;
-                while (!dataFile.EndOfStream)
+                int counter = 0;
+                while (!dataFile.EndOfStream) // Loop through the data file and assign fields, then create a new WineItem
                 {
                     string inputRecord = dataFile.ReadLine();
 
@@ -35,7 +36,7 @@ namespace assignment1
 
                     wineItems.Add(id, description, pack);
 
-                    index++;
+                    counter++;
                 }
 
                 listLoaded = true;
