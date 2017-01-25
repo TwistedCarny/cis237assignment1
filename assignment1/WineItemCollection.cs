@@ -24,12 +24,6 @@ namespace assignment1
             {
                 _wineItemArray[searchIndex] = new WineItem(id, description, pack);
             }
-            else
-            {
-                Array.Resize(ref _wineItemArray, _wineItemArray.Length + 1);
-                int index = _wineItemArray.Length - 1;
-                _wineItemArray[index] = new WineItem(id, description, pack);
-            }
 
         }
 
@@ -37,10 +31,14 @@ namespace assignment1
         {
             foreach(WineItem item in _wineItemArray)
             {
-                if(item.ID.ToUpper() == inputID.ToUpper())
+                if(item != null)
                 {
-                    return item;
+                    if (item.ID.ToUpper() == inputID.ToUpper())
+                    {
+                        return item;
+                    }
                 }
+                
             }
 
             return null;
