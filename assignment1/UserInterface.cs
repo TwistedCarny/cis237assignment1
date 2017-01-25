@@ -64,5 +64,16 @@ namespace assignment1
             Console.Clear();
         }
 
+        public void WaitForKeyPress()
+        {
+            Console.ReadLine();
+        }
+
+        public void WaitForKeyPress(string message)
+        {
+            Console.WriteLine(message);
+            Console.ReadLine();
+        }
+
     }
 }
