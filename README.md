@@ -3,7 +3,7 @@
 ## Due 01-25-2017
 
 ## Author
-
+Westin Curtis
 
 
 ## Description
@@ -87,3 +87,4 @@ Suggestion/Hints:
 http://stackoverflow.com/questions/794760/does-index-of-array-exist
 
 ## Known Problems, Issues, And/Or Errors in the Program
+None
